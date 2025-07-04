@@ -84,7 +84,8 @@ jobs:
 
  
 
-  
+    - name: powerplatform-actions
+      uses: microsoft/powerplatform-actions@v1.9.1
 
     - name: export-solution action -unmanaged
 
