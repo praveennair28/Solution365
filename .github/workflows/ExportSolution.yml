@@ -39,7 +39,7 @@ on:
           description: "New changes to commit"
           required: true
       allow_empty_commit:
-          description: "http endpoint of dataverse"
+          description: "allow_empty_commit"
           required: true
           default: 'false'
 
@@ -130,6 +130,30 @@ jobs:
         solution-output-file: ${{ github.event.repository.name }}/${{github.event.inputs.solution_name }}_${{github.event.inputs.solution_version }}.managed.zip
         overwrite: true
         managed: true
+
+     - name: commit changes
+       shell: pwsh
+       run: |
+         rm -rf ${{ github.event.repository.name }}/${{github.event.inputs.solution_name }}_${{github.event.inputs.solution_version }}.unmanaged.zip
+         git config user.name "Github Actions Bot"
+         git config user.email "<>"
+         git pull
+         git add --all
+         git commit -am "${{github.event.inputs.allow_empty_commit}}" --allow-empty
+
+     - name: push changes to main
+       if: github.event.inputs.branch_to_create == ''
+       run: |
+          git push origin main
+
+     - name: push changes to {{github.event.inputs.branch_to_create}}
+       if: github.event.inputs.branch_to_create != ''
+       run: |
+          git push --set-upstream origin {{github.event.inputs.branch_to_create}}
+        
+      
+         
+         
 
         
 
