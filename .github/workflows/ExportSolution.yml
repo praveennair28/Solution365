@@ -11,42 +11,37 @@ on:
   workflow_dispatch:
 
     inputs:
-
-      # Change this value
-
       solution_name:
-
-        description: 'name of the solution to worked on from Power Platform'
-
+        description: "Name of the solution in dataverse"
         required: true
-
-        default:  Test
-
-       #Do Not change these values
-
-      solution_exported_folder:
-
-        description: 'folder name for staging the exported solution *do not change*'
-
+        default: TestSolution
+      solution_version:
+        description: "Version of the solution to export from power platform"
         required: true
-
-        default: out/exported/
-
-      solution_folder:
-
-        description: 'staging the unpacked solution folder before check-in *do not change*'
-
+        default: v1.0.0.0
+      pk_tenantid:
+        description: "tenant id of the environment"
         required: true
-
-        default: out/solutions/
-
-      solution_target_folder:
-
-       description: 'folder name to be created and checked in *do not change*'
-
-       required: true
-
-       default: solutions/
+        default: TestSolution
+      environment_url:
+        description: "http endpoint of dataverse"
+        required: true
+        default: "https://orgd6524967.crm8.dynamics.com"
+      source_branch:
+        description: "source barnch"
+        required: true
+        default: dev
+      branch_to_create:
+         description: "branch to create"
+         required: false
+         default: dev
+      commit_message:
+          description: "New changes to commit"
+          required: true
+      allow_empty_commit:
+          description: "http endpoint of dataverse"
+          required: true
+          default: 'false'
 
 env:
 
@@ -103,8 +98,29 @@ jobs:
         client-secret: ${{secrets.PowerPlatformSPN}}       
         tenant-id:  ${{ env.TENANT_ID  }}
         environment-url:  ${{ env.ENVIRONMENT_URL  }}
-              
-          
+
+     - name: export-solution action
+       uses: microsoft/powerplatform-actions/export-solution@v1.7.0
+       with:
+        app-id:  ${{ env.CLIENT_ID  }}
+        client-secret: ${{secrets.PowerPlatformSPN}}       
+        tenant-id:  ${{ env.TENANT_ID  }}
+        environment-url:  ${{ env.ENVIRONMENT_URL  }}
+        solution-name: ${{ github.event.inputs.solution_name  }}
+        solution-output-file: ${{ github.event.repository.name }}/${{github.event.inputs.solution_name }}_${{github.event.inputs.solution_version }}.unmanaged.zip
+        overwrite: true
+
+     - name: unpack-solution action
+       uses: microsoft/powerplatform-actions/unpack-solution@v1.7.0
+       with:
+        solution-file: ${{ github.event.repository.name }}/${{github.event.inputs.solution_name }}_${{github.event.inputs.solution_version }}.unmanaged.zip
+        solution-folder: ${{ github.event.repository.name }}/${{github.event.inputs.solution_name }}
+        solution-type: 'Unmanaged'
+        process-canvas-apps: true
+        overwrite-files: true
+        
+
+        
 
 
 
