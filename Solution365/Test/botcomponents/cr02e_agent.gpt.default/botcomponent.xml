@@ -1,0 +1,10 @@
+<botcomponent schemaname="cr02e_agent.gpt.default">
+  <componenttype>15</componenttype>
+  <iscustomizable>0</iscustomizable>
+  <name>Agent_Test</name>
+  <parentbotid>
+    <schemaname>cr02e_agent</schemaname>
+  </parentbotid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</botcomponent>
