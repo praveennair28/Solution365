@@ -86,7 +86,7 @@ jobs:
         tenant-id:  ${{ env.TENANT_ID  }}
         environment-url:  ${{ env.ENVIRONMENT_URL  }}
         solution-name: ${{ github.event.inputs.solution_name  }}
-        solution-file: ${{ github.workspace }}/${{ github.REPO_NAME }}/${{github.event.inputs.solution_name }}_${{github.event.inputs.solution_version }}_managed.zip
+        solution-file: ${{ github.event.repository.name }}/${{github.event.inputs.solution_name }}_${{github.event.inputs.solution_version }}_managed.zip
         force-overwrite: false
         publish-changes: false
         stage-and-upgrade: ${{github.event.inputs.solution-upgrade}}
