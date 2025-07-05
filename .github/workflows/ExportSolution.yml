@@ -118,6 +118,19 @@ jobs:
         solution-type: 'Unmanaged'
         process-canvas-apps: true
         overwrite-files: true
+
+     - name: export-managed-solution action
+       uses: microsoft/powerplatform-actions/export-solution@v1.7.0
+       with:
+        app-id:  ${{ env.CLIENT_ID  }}
+        client-secret: ${{secrets.PowerPlatformSPN}}       
+        tenant-id:  ${{ env.TENANT_ID  }}
+        environment-url:  ${{ env.ENVIRONMENT_URL  }}
+        solution-name: ${{ github.event.inputs.solution_name  }}
+        solution-output-file: ${{ github.event.repository.name }}/${{github.event.inputs.solution_name }}_${{github.event.inputs.solution_version }}.managed.zip
+        overwrite: true
+        managed: true
+
         
 
         
