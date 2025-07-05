@@ -149,7 +149,7 @@ jobs:
      - name: push changes to {{github.event.inputs.branch_to_create}}
        if: github.event.inputs.branch_to_create != ''
        run: |
-          git push --set-upstream origin {{github.event.inputs.branch_to_create}}
+          git push --set-upstream origin dev
         
       
          
