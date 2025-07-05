@@ -107,13 +107,13 @@ jobs:
         tenant-id:  ${{ env.TENANT_ID  }}
         environment-url:  ${{ env.ENVIRONMENT_URL  }}
         solution-name: ${{ github.event.inputs.solution_name  }}
-        solution-output-file: ${{ github.event.repository.name }}/${{github.event.inputs.solution_name }}_${{github.event.inputs.solution_version }}.unmanaged.zip
+        solution-output-file: ${{ github.event.repository.name }}/${{github.event.inputs.solution_name }}_${{github.event.inputs.solution_version }}_unmanaged.zip
         overwrite: true
 
      - name: unpack-solution action
        uses: microsoft/powerplatform-actions/unpack-solution@v1.7.0
        with:
-        solution-file: ${{ github.event.repository.name }}/${{github.event.inputs.solution_name }}_${{github.event.inputs.solution_version }}.unmanaged.zip
+        solution-file: ${{ github.event.repository.name }}/${{github.event.inputs.solution_name }}_${{github.event.inputs.solution_version }}_unmanaged.zip
         solution-folder: ${{ github.event.repository.name }}/${{github.event.inputs.solution_name }}
         solution-type: 'Unmanaged'
         process-canvas-apps: true
@@ -127,14 +127,14 @@ jobs:
         tenant-id:  ${{ env.TENANT_ID  }}
         environment-url:  ${{ env.ENVIRONMENT_URL  }}
         solution-name: ${{ github.event.inputs.solution_name  }}
-        solution-output-file: ${{ github.event.repository.name }}/${{github.event.inputs.solution_name }}_${{github.event.inputs.solution_version }}.managed.zip
+        solution-output-file: ${{ github.event.repository.name }}/${{github.event.inputs.solution_name }}_${{github.event.inputs.solution_version }}_managed.zip
         overwrite: true
         managed: true
 
      - name: commit changes
        shell: pwsh
        run: |
-         rm -rf ${{ github.event.repository.name }}/${{github.event.inputs.solution_name }}_${{github.event.inputs.solution_version }}.unmanaged.zip
+         rm -rf ${{ github.event.repository.name }}/${{github.event.inputs.solution_name }}_${{github.event.inputs.solution_version }}_unmanaged.zip
          git config user.name "Github Actions Bot"
          git config user.email "<>"
          git pull
