@@ -94,9 +94,7 @@ jobs:
      
     #install power platform
      - name: install power platform tools
-       uses: actions/setup-dotnet@3.0.2
-       with:
-        dotnet-version: '8.0.x'
+       uses: microsoft/powerplatform-actions/actions-install@v1.7.0
         
      - name: who am I?
        uses: microsoft/powerplatform-actions/who-am-i@v1.7.0
