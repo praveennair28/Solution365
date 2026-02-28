@@ -30,11 +30,11 @@ on:
       source_branch:
         description: "source barnch"
         required: true
-        default: DEV
+        default: dev
       branch_to_create:
          description: "branch to create"
          required: false
-         default: DEV
+         default: dev
       commit_message:
           description: "New changes to commit"
           required: true
@@ -72,7 +72,7 @@ jobs:
      - name: create or checkout branch
        uses: actions/checkout@v4
        with:
-        ref: DEV
+        ref: dev
      - name: List files in the directory
        run:
          ls ${{ github.workspace }}
@@ -150,7 +150,7 @@ jobs:
      - name: push changes to {{github.event.inputs.branch_to_create}}
        if: github.event.inputs.branch_to_create != ''
        run: |
-          git push --set-upstream origin DEV
+          git push --set-upstream origin dev
         
       
          
