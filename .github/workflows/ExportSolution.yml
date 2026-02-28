@@ -26,15 +26,15 @@ on:
       environment_url:
         description: "http endpoint of dataverse"
         required: true
-        default: "https://orgd6524967.crm8.dynamics.com"
+        default: "https://orga460f097.crm8.dynamics.com"
       source_branch:
         description: "source barnch"
         required: true
-        default: dev
+        default: DEV
       branch_to_create:
          description: "branch to create"
          required: false
-         default: dev
+         default: DEV
       commit_message:
           description: "New changes to commit"
           required: true
@@ -47,7 +47,7 @@ env:
 
 #edit your values here
 
-  ENVIRONMENT_URL: 'https://orgd6524967.crm8.dynamics.com/'
+  ENVIRONMENT_URL: 'https://orga460f097.crm8.dynamics.com/'
 
   CLIENT_ID: 'f356e043-bead-4142-96fd-b196ef297a43'
 
@@ -72,7 +72,7 @@ jobs:
      - name: create or checkout branch
        uses: actions/checkout@v4
        with:
-        ref: dev
+        ref: DEV
      - name: List files in the directory
        run:
          ls ${{ github.workspace }}
@@ -150,7 +150,7 @@ jobs:
      - name: push changes to {{github.event.inputs.branch_to_create}}
        if: github.event.inputs.branch_to_create != ''
        run: |
-          git push --set-upstream origin dev
+          git push --set-upstream origin DEV
         
       
          
