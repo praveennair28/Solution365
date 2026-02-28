@@ -1,0 +1,41 @@
+<bot schemaname="cr005_84d357bf-f73e-4b28-9c13-3aaf4215814a">
+  <authenticationconfiguration>{
+  "$kind": "BotAuthenticationConfiguration",
+  "connectionName": "a053e816-5b0c-4374-83c0-f734a0307b5b"
+}</authenticationconfiguration>
+  <authenticationmode>4</authenticationmode>
+  <authenticationtrigger>1</authenticationtrigger>
+  <iscustomizable>1</iscustomizable>
+  <language>1033</language>
+  <name>praveensportal bot</name>
+  <runtimeprovider>0</runtimeprovider>
+  <synchronizationstatus>{
+  "$kind": "BotSynchronizationDetails",
+  "contentVersion": 2,
+  "lastFinishedPublishOperation": {
+    "$kind": "PublishResultDetails",
+    "operationStart": "2025-12-30T08:21:05.0307085Z",
+    "operationEnd": "2025-12-30T08:21:42.6004797Z",
+    "status": "Succeeded"
+  },
+  "lastPublishedDetails": {
+    "$kind": "SuccessfulPublishResultDetails",
+    "authenticationMode": "GenericOAuth2"
+  },
+  "lastPublishedOnUtc": "2025-12-30T08:21:38.5910197",
+  "currentSynchronizationState": {
+    "$kind": "SynchronizationState",
+    "botRegistration": {
+      "$kind": "BotRegistrationDetails",
+      "botRegistrationIdConsumptionTime": "2025-12-30T08:20:43Z",
+      "applicationId": "50eaf27b-1c74-4df2-832f-7bb8b0bf2261",
+      "isAppAvailableInTenant": true
+    },
+    "provisioningStatus": "Provisioned",
+    "state": "Synchronized"
+  },
+  "lastSynchronizedOnUtc": "2025-12-30T08:22:05.3303054Z"
+}</synchronizationstatus>
+  <template>powerpages-1.0.0</template>
+  <timezoneruleversionnumber>4</timezoneruleversionnumber>
+</bot>

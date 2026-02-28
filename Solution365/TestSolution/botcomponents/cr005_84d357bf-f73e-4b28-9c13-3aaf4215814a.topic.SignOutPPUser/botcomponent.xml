@@ -1,0 +1,11 @@
+<botcomponent schemaname="cr005_84d357bf-f73e-4b28-9c13-3aaf4215814a.topic.SignOutPPUser">
+  <componenttype>9</componenttype>
+  <description>This system topic triggers when the agent needs to sign out Power Pages user</description>
+  <iscustomizable>0</iscustomizable>
+  <name>Sign Out PowerPages User</name>
+  <parentbotid>
+    <schemaname>cr005_84d357bf-f73e-4b28-9c13-3aaf4215814a</schemaname>
+  </parentbotid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</botcomponent>
